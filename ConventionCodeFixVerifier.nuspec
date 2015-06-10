@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>ConventionCodeFixVerifier</id>
+    <version>1.0.0.0</version>
+    <title>ConventionCodeFixVerifier</title>
+    <authors>Nobuyuki Iwanaga</authors>
+    <owners>Nobuyuki Iwanaga</owners>
+      <licenseUrl>https://github.com/ufcpp/ConventionCodeFixVerifier/blob/master/LICENSE</licenseUrl>
+      <projectUrl>https://github.com/ufcpp/ConventionCodeFixVerifier/</projectUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>ConventionCodeFixVerifier</description>
+    <releaseNotes>Initlial release.</releaseNotes>
+    <copyright>Nobuyuki Iwanaga</copyright>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+      <file src="tools\*" target="tools\" />
+      <file src="content\Verifiers\*" target="content\Verifiers\" />
+      <file src="content\DataSource\UnitTest\TestMethod2\*" target="content\DataSource\UnitTest\TestMethod2\" />
+  </files>
+</package>
