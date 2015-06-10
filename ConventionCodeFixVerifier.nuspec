@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>ConventionCodeFixVerifier</id>
-    <version>1.0.0.0</version>
+    <version>1.1.1.0</version>
     <title>ConventionCodeFixVerifier</title>
     <authors>Nobuyuki Iwanaga</authors>
     <owners>Nobuyuki Iwanaga</owners>
@@ -10,15 +10,19 @@
       <projectUrl>https://github.com/ufcpp/ConventionCodeFixVerifier/</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>ConventionCodeFixVerifier</description>
-    <releaseNotes>Initlial release.</releaseNotes>
+    <releaseNotes>Add JSON schema for expected results.</releaseNotes>
     <copyright>Nobuyuki Iwanaga</copyright>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System" targetFramework="" />
     </frameworkAssemblies>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="6.0.8" />
+    </dependencies>
   </metadata>
   <files>
       <file src="tools\*" target="tools\" />
       <file src="content\Verifiers\*" target="content\Verifiers\" />
+      <file src="content\DataSource\*" target="content\DataSource\" />
       <file src="content\DataSource\UnitTest\TestMethod2\*" target="content\DataSource\UnitTest\TestMethod2\" />
   </files>
 </package>

@@ -1,0 +1,9 @@
+﻿[
+    {
+        "id": "Analyzer1",
+        "sevirity": "Warning",
+        "line": 10,
+        "column": 11,
+        "message-args": [ "TypeName" ]
+    }
+]

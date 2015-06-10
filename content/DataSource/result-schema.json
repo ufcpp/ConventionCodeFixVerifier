@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+
+    "title": "Json schema for Diagnostic Results",
+
+    "type": "array",
+
+    "items": {
+        "type": "object",
+
+        "properties": {
+            "id": { "type": "string" },
+            "sevirity": { "enum": [ "Hidden", "Info", "Warning", "Error" ] },
+            "line": { "type": "integer" },
+            "column": { "type": "integer" },
+            "message-args": { "type": "array", "items": { "type": "string" } }
+        }
+    }
+}
