@@ -82,7 +82,7 @@ namespace TestHelper
                 yield return new DiagnosticResult
                 {
                     Id = r.Id,
-                    Message = string.Format(diag.MessageFormat.ToString(), (object[])r.MessageArgs),
+                    Message = r.MessageArgs == null ? diag.MessageFormat.ToString() : string.Format(diag.MessageFormat.ToString(), (object[])r.MessageArgs),
                     Severity = r.Sevirity,
                     Locations = new[] { new DiagnosticResultLocation("Test0.cs", r.Line, r.Column) },
                 };
