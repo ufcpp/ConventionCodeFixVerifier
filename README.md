@@ -1,5 +1,26 @@
 # ConventionCodeFixVerifier
 
+Extends the `CodeFixVerifier` class in the "Analyzer with Code Fix" project template to read test cases from .cs files by naming convention.
+
+## Convention
+
+The naming convention is:
+
+- Put the following files in a folder `/DataSource/[test class name]/[test method name]`
+  - `Source.cs`: an input source code for your Analyzer/Code Fix
+  - `Result.json`: diagnostic results of the Source.cs by your Analyzer
+  - `NewSource.cs`: an output source code by your Code Fix
+- Then, `VerifyDiagnostic` calls 
+  - if the folder contains only `Source.cs`
+    - `CodeFixVerifier.VerifyCSharpDiagnostic([read from Source.cs])`
+  - if the folder contains `Source.cs` and `Result.json`
+    - `CodeFixVerifier.VerifyCSharpDiagnostic([read from Source.cs], [read from Result.json])`
+  - if the folder contains `Source.cs`, `Result.json`, and `NewSource.cs`
+    - `CodeFixVerifier.VerifyCSharpDiagnostic([read from Source.cs], [read from Result.json])`
+    - `CodeFixVerifier.VerifyCSharpFix([read from Source.cs], [read from NewSource.cs])`
+
+## NuGet package
+
 https://www.nuget.org/packages/ConventionCodeFixVerifier/
 
 - Install-Package ConventionCodeFixVerifier
