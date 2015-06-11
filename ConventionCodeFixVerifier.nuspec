@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>ConventionCodeFixVerifier</id>
-    <version>1.1.1.0</version>
+    <version>1.1.2.0</version>
     <title>ConventionCodeFixVerifier</title>
     <authors>Nobuyuki Iwanaga</authors>
     <owners>Nobuyuki Iwanaga</owners>
       <licenseUrl>https://github.com/ufcpp/ConventionCodeFixVerifier/blob/master/LICENSE</licenseUrl>
       <projectUrl>https://github.com/ufcpp/ConventionCodeFixVerifier/</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>ConventionCodeFixVerifier</description>
-    <releaseNotes>Add JSON schema for expected results.</releaseNotes>
+    <description>Extends the CodeFixVerifier class in the "Analyzer with Code Fix" project template to read test cases from .cs files by naming convention.</description>
+    <releaseNotes>Add "description" in the JSON schema.</releaseNotes>
     <copyright>Nobuyuki Iwanaga</copyright>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System" targetFramework="" />
