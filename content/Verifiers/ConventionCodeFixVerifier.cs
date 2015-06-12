@@ -218,6 +218,8 @@ namespace TestHelper
             }
         }
 
+        protected virtual CSharpCompilationOptions CompilationOptions => new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary);
+
         protected Project CreateProject(Dictionary<string, string> sources)
         {
             string fileNamePrefix = DefaultFilePathPrefix;
@@ -244,7 +246,7 @@ namespace TestHelper
             }
 
             var project = solution.GetProject(projectId)
-                .WithCompilationOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+                .WithCompilationOptions(CompilationOptions);
             return project;
         }
 
