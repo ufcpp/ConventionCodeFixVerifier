@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
@@ -208,6 +207,47 @@ namespace TestHelper
             return diagnostics.OrderBy(d => d.Location.SourceSpan.Start).ToArray();
         }
 
+        protected virtual IEnumerable<MetadataReference> References
+        {
+            get
+            {
+                yield return MetadataReference.CreateFromAssembly(typeof(object).Assembly);
+                yield return MetadataReference.CreateFromAssembly(typeof(Enumerable).Assembly);
+                yield return MetadataReference.CreateFromAssembly(typeof(CSharpCompilation).Assembly);
+                yield return MetadataReference.CreateFromAssembly(typeof(Compilation).Assembly);
+            }
+        }
+
+        protected Project CreateProject(Dictionary<string, string> sources)
+        {
+            string fileNamePrefix = DefaultFilePathPrefix;
+            string fileExt = CSharpDefaultFileExt;
+
+            var projectId = ProjectId.CreateNewId(debugName: TestProjectName);
+
+            var solution = new AdhocWorkspace()
+                .CurrentSolution
+                .AddProject(projectId, TestProjectName, TestProjectName, LanguageNames.CSharp);
+
+            foreach (var reference in References)
+            {
+                solution = solution.AddMetadataReference(projectId, reference);
+            }
+
+            int count = 0;
+            foreach (var source in sources)
+            {
+                var newFileName = source.Key;
+                var documentId = DocumentId.CreateNewId(projectId, debugName: newFileName);
+                solution = solution.AddDocument(documentId, newFileName, SourceText.From(source.Value));
+                count++;
+            }
+
+            var project = solution.GetProject(projectId)
+                .WithCompilationOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+            return project;
+        }
+
         #endregion
         #region read expected results from JSON file
 
@@ -251,50 +291,6 @@ namespace TestHelper
 
             [JsonProperty(PropertyName = "message-args")]
             public string[] MessageArgs { get; set; }
-        }
-
-        #endregion
-        #region Ver. 2
-
-        protected virtual IEnumerable<MetadataReference> References
-        {
-            get
-            {
-                yield return MetadataReference.CreateFromAssembly(typeof(object).Assembly);
-                yield return MetadataReference.CreateFromAssembly(typeof(Enumerable).Assembly);
-                yield return MetadataReference.CreateFromAssembly(typeof(CSharpCompilation).Assembly);
-                yield return MetadataReference.CreateFromAssembly(typeof(Compilation).Assembly);
-            }
-        }
-
-        protected Project CreateProject(Dictionary<string, string> sources)
-        {
-            string fileNamePrefix = DefaultFilePathPrefix;
-            string fileExt = CSharpDefaultFileExt;
-
-            var projectId = ProjectId.CreateNewId(debugName: TestProjectName);
-
-            var solution = new AdhocWorkspace()
-                .CurrentSolution
-                .AddProject(projectId, TestProjectName, TestProjectName, LanguageNames.CSharp);
-
-            foreach (var reference in References)
-            {
-                solution = solution.AddMetadataReference(projectId, reference);
-            }
-
-            int count = 0;
-            foreach (var source in sources)
-            {
-                var newFileName = source.Key;
-                var documentId = DocumentId.CreateNewId(projectId, debugName: newFileName);
-                solution = solution.AddDocument(documentId, newFileName, SourceText.From(source.Value));
-                count++;
-            }
-
-            var project = solution.GetProject(projectId)
-                .WithCompilationOptions(new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
-            return project;
         }
 
         #endregion

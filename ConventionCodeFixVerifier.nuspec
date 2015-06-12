@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>ConventionCodeFixVerifier</id>
-    <version>2.0.1.0</version>
+    <version>2.0.2.0</version>
     <title>ConventionCodeFixVerifier</title>
     <authors>Nobuyuki Iwanaga</authors>
     <owners>Nobuyuki Iwanaga</owners>
@@ -10,7 +10,7 @@
       <projectUrl>https://github.com/ufcpp/ConventionCodeFixVerifier/</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extends the CodeFixVerifier class in the "Analyzer with Code Fix" project template to read test cases from .cs files by naming convention.</description>
-    <releaseNotes>Suppoert multiple source/expected files. (JSON scema updated)</releaseNotes>
+    <releaseNotes>bug fix.</releaseNotes>
     <copyright>Nobuyuki Iwanaga</copyright>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System" targetFramework="" />
@@ -21,8 +21,11 @@
   </metadata>
   <files>
       <file src="tools\*" target="tools\" />
+      <file src="content\Helpers\*" target="content\Helpers\" />
       <file src="content\Verifiers\*" target="content\Verifiers\" />
       <file src="content\DataSource\*" target="content\DataSource\" />
-      <file src="content\DataSource\UnitTest\TestMethod2\*" target="content\DataSource\UnitTest\TestMethod2\" />
+      <file src="content\DataSource\UnitTest\TestMethod2\Diagnostic/*" target="content\DataSource\UnitTest\TestMethod2\Diagnostic/" />
+      <file src="content\DataSource\UnitTest\TestMethod2\Expected/*" target="content\DataSource\UnitTest\TestMethod2\Expected/" />
+      <file src="content\DataSource\UnitTest\TestMethod2\Source/*" target="content\DataSource\UnitTest\TestMethod2\Source/" />
   </files>
 </package>
