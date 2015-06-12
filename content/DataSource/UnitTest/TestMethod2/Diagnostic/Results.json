@@ -4,6 +4,7 @@
         "sevirity": "Warning",
         "line": 10,
         "column": 11,
+        "path": "Source.cs",
         "message-args": [ "TypeName" ]
     }
 ]
