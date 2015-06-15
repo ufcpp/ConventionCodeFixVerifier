@@ -62,12 +62,12 @@ namespace TestHelper
             var resultsPath = Path.Combine(DataSourcePath, testName, "Results.json");
             var expectedResults = ReadResults(resultsPath).ToArray();
 
+            VerifyCSharpDiagnostic(source, expectedResults);
+
             var newSourcePath = Path.Combine(DataSourcePath, testName, "NewSource.cs");
             if (File.Exists(newSourcePath))
             {
                 var newSource = File.ReadAllText(newSourcePath);
-
-                VerifyCSharpDiagnostic(source, expectedResults);
                 VerifyCSharpFix(source, newSource);
             }
         }
