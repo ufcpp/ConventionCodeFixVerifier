@@ -56,20 +56,18 @@ namespace TestHelper
         /// <param name="testName"></param>
         private void VerifyCSharpByConventionV1(string testName)
         {
+            var sources = new Dictionary<string, string>();
             var sourcePath = Path.Combine(DataSourcePath, testName, "Source.cs");
-            var source = File.ReadAllText(sourcePath);
+            if (File.Exists(sourcePath)) { sources.Add(Path.GetFileName(sourcePath), File.ReadAllText(sourcePath)); }
 
             var resultsPath = Path.Combine(DataSourcePath, testName, "Results.json");
             var expectedResults = ReadResults(resultsPath).ToArray();
 
-            var newSourcePath = Path.Combine(DataSourcePath, testName, "NewSource.cs");
-            if (File.Exists(newSourcePath))
-            {
-                var newSource = File.ReadAllText(newSourcePath);
+            var expectedSources = new Dictionary<string, string>();
+            var expectedSourcePath = Path.Combine(DataSourcePath, testName, "NewSource.cs");
+            if (File.Exists(expectedSourcePath)) { expectedSources.Add(Path.GetFileName(sourcePath), File.ReadAllText(expectedSourcePath)); }
 
-                VerifyCSharpDiagnostic(source, expectedResults);
-                VerifyCSharpFix(source, newSource);
-            }
+            VerifyCSharp(sources, expectedResults, expectedSources);
         }
 
         #endregion
@@ -269,7 +267,7 @@ namespace TestHelper
                     Id = r.Id,
                     Message = r.MessageArgs == null ? diag.MessageFormat.ToString() : string.Format(diag.MessageFormat.ToString(), (object[])r.MessageArgs),
                     Severity = r.Sevirity,
-                    Locations = new[] { new DiagnosticResultLocation(r.Path ?? "Test0.cs", r.Line, r.Column) },
+                    Locations = new[] { new DiagnosticResultLocation(r.Path ?? "Source.cs", r.Line, r.Column) },
                 };
             }
         }
