@@ -201,7 +201,7 @@ namespace TestHelper
         private static Diagnostic[] GetDiagnostics(Project project, DiagnosticAnalyzer analyzer)
         {
             var compilationWithAnalyzers = project.GetCompilationAsync().Result.WithAnalyzers(ImmutableArray.Create(analyzer));
-            var diagnostics = compilationWithAnalyzers.GetAllDiagnosticsAsync().Result;
+            var diagnostics = compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result;
             return diagnostics.OrderBy(d => d.Location.SourceSpan.Start).ToArray();
         }
 
