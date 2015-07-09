@@ -86,6 +86,9 @@ namespace TestHelper
         {
             var diagnosticPath = Path.Combine(DataSourcePath, testName, "Diagnostic");
 
+            if (!Directory.Exists(diagnosticPath))
+                yield break;
+
             foreach (var file in Directory.GetFiles(diagnosticPath, "*.json"))
             {
                 foreach (var r in ReadResults(file))
@@ -110,6 +113,9 @@ namespace TestHelper
 
         private static Dictionary<string, string> ReadFiles(string sourcePath)
         {
+            if (!Directory.Exists(sourcePath))
+                return null; ;
+
             var sources = new Dictionary<string, string>();
 
             foreach (var file in Directory.GetFiles(sourcePath, "*.cs"))
