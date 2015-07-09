@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>ConventionCodeFixVerifier</id>
-    <version>2.2.0.0</version>
+    <version>3.0.0.0</version>
     <title>ConventionCodeFixVerifier</title>
     <authors>Nobuyuki Iwanaga</authors>
     <owners>Nobuyuki Iwanaga</owners>
@@ -10,13 +10,13 @@
       <projectUrl>https://github.com/ufcpp/ConventionCodeFixVerifier/</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extends the CodeFixVerifier class in the "Analyzer with Code Fix" project template to read test cases from .cs files by naming convention.</description>
-    <releaseNotes>fix VerifyCSharpByConventionV1.</releaseNotes>
+    <releaseNotes>Upgrade to support Microsoft.CodeAnalysis rc3.</releaseNotes>
     <copyright>Nobuyuki Iwanaga</copyright>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System" targetFramework="" />
     </frameworkAssemblies>
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="6.0.8" />
+      <dependency id="Newtonsoft.Json" version="7.0.1" />
     </dependencies>
   </metadata>
   <files>

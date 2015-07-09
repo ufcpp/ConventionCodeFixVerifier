@@ -209,10 +209,10 @@ namespace TestHelper
         {
             get
             {
-                yield return MetadataReference.CreateFromAssembly(typeof(object).Assembly);
-                yield return MetadataReference.CreateFromAssembly(typeof(Enumerable).Assembly);
-                yield return MetadataReference.CreateFromAssembly(typeof(CSharpCompilation).Assembly);
-                yield return MetadataReference.CreateFromAssembly(typeof(Compilation).Assembly);
+                yield return MetadataReference.CreateFromFile(typeof(object).Assembly.Location);
+                yield return MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location);
+                yield return MetadataReference.CreateFromFile(typeof(CSharpCompilation).Assembly.Location);
+                yield return MetadataReference.CreateFromFile(typeof(Compilation).Assembly.Location);
             }
         }
 
