@@ -6,6 +6,8 @@ Extends the `CodeFixVerifier` class in the "Analyzer with Code Fix" project temp
 
 The naming convention is:
 
+### Convention Version 1
+
 - Put the following files in a folder `/DataSource/[test class name]/[test method name]`
   - `Source.cs`: an input source code for your Analyzer/Code Fix
   - `Result.json`: diagnostic results of the Source.cs by your Analyzer
@@ -18,6 +20,13 @@ The naming convention is:
   - if the folder contains `Source.cs`, `Result.json`, and `NewSource.cs`
     - `CodeFixVerifier.VerifyCSharpDiagnostic([read from Source.cs], [read from Result.json])`
     - `CodeFixVerifier.VerifyCSharpFix([read from Source.cs], [read from NewSource.cs])`
+
+### Convention Version 2
+
+- Put the following files/subfolders in a folder `/DataSource/[test class name]/[test method name]`
+  - `*.cs` in `Source`: inputs for your Analyzer/Code Fix
+  - `*.json` in `Diagnostic`: diagnostic results of the Source.cs by your Analyzer
+  - `*.cs` in `Expected{n}`: output source codes by the n-th action of your Code Fix
 
 ## NuGet package
 
