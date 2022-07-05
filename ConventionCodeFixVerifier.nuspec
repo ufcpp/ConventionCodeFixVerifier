@@ -15,9 +15,6 @@
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System" targetFramework="" />
     </frameworkAssemblies>
-    <dependencies>
-      <dependency id="Newtonsoft.Json" version="7.0.1" />
-    </dependencies>
   </metadata>
   <files>
       <file src="tools\*" target="tools\" />
